@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import MainPage from '../../../../layouts/MainPage.astro';
+import { PAGE_SIZE } from '../../../../consts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  // collect unique tags
+  const allTags = [
+    ...new Set(posts.flatMap((post) => post.data.tags || [])),
+  ];
+
+  // generate paths for each tag + each page
+  const paths = allTags.flatMap((tag) => {
+    const taggedPosts = posts.filter((post) =>
+      (post.data.tags || []).includes(tag)
+    );
+    const totalPages = Math.ceil(taggedPosts.length / PAGE_SIZE);
+
+    return Array.from({ length: totalPages }, (_, i) => ({
+      params: { tag, page: String(i + 1) },
+    }));
+  });
+
+  return paths;
+}
+
+const posts = (await getCollection('blog')).filter((post) =>
+  (post.data.tags || []).includes(Astro.params.tag)
+);
+
+const sorted = posts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const currentPage = Number(Astro.params.page) || 1;
+const start = (currentPage - 1) * PAGE_SIZE;
+const end = start + PAGE_SIZE;
+
+const paginatedPosts = sorted.slice(start, end);
+const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
+---
+
+<MainPage
+  posts={paginatedPosts}
+  currentPage={currentPage}
+  totalPages={totalPages}
+  tag={Astro.params.tag}
+/>

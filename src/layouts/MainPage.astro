@@ -14,9 +14,10 @@ interface Props {
   posts: BlogEntry[];
   currentPage: number;
   totalPages: number;
+  tag?: string;
 }
 
-const { posts, currentPage, totalPages } = Astro.props;
+const { posts, currentPage, totalPages, tag} = Astro.props;
 ---
 
 <!doctype html>
@@ -27,6 +28,13 @@ const { posts, currentPage, totalPages } = Astro.props;
 	<body>
 		<Header />
 		<main>
+      {tag && (
+        <div class="mb-8 text-center">
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+            Posts tagged with <span class="text-blue-600 dark:text-blue-400">#{tag}</span>
+          </h1>
+        </div>
+      )}
 			<section>
         <ul>
           {
@@ -48,8 +56,15 @@ const { posts, currentPage, totalPages } = Astro.props;
       </section>
       <nav class="flex items-center justify-center gap-4 mt-8">
         {currentPage > 1 && (
-          <a
-            href={currentPage === 2 ? '/' : `/page/${currentPage - 1}`}
+          <a href={
+            currentPage === 2
+              ? tag
+                ? `/tags/${tag}/page/1`
+                : `/`
+              : tag
+                ? `/tags/${tag}/page/${currentPage - 1}`
+                : `/page/${currentPage - 1}`
+          }
             class="px-4 py-2 rounded bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
           >
             ← Previous
@@ -62,7 +77,11 @@ const { posts, currentPage, totalPages } = Astro.props;
 
         {currentPage < totalPages && (
           <a
-            href={`/page/${currentPage + 1}`}
+          href={
+              tag
+                ? `/tags/${tag}/page/${currentPage + 1}`
+                : `/page/${currentPage + 1}`
+            }
             class="px-4 py-2 rounded bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
           >
             Next →

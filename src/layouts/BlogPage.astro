@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { getCollection } from 'astro:content';
+import '../styles/blog-page.css';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+// Get all blog posts
+const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+// Recent posts (last 5)
+const recentPosts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+
+// Collect unique tags
+const tagSet = new Set<string>();
+
+for (const post of allPosts) {
+  (post.data.tags || []).forEach((tag: string) => tagSet.add(tag));
+}
+const tags = Array.from(tagSet).sort();
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+  </head>
+
+	<body>
+		<Header />
+    <main class="container mx-auto">
+      <!-- Hero -->
+      {heroImage && (
+        <div class="hero-image lg:px-32 mb-6">
+          <Image width={1280} height={640} src={heroImage} alt={title} class="rounded-lg" />
+        </div>
+      )}
+
+      <!-- Title & Meta -->
+      <header class="mb-8 py-8 text-center">
+        <h1 class="text:2xl lg:text-5xl font-serif font-bold">{title}</h1>
+        <div class="mt-2 text-sm text-gray-500">
+          <FormattedDate date={pubDate} />
+          {updatedDate && (
+            <span class="ml-2">· Last updated <FormattedDate date={updatedDate} /></span>
+          )}
+        </div>
+        <hr class="mt-4" />
+      </header>
+
+      <!-- Grid layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <article class="prose lg:col-span-3">
+          <slot />
+        </article>
+
+        <aside class="space-y-6 lg:col-span-1 mt-6">
+          <section>
+            <h2 class="text-2xl font-semibold mb-2">Recent Posts</h2>
+              <ul class="text-sm leading-6 space-y-2">
+                {recentPosts.map((post) => (
+                  <li>
+                    <a href={`/${post.id}/`} class="hover:underline">
+                      {post.data.title}
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="text-2xl font-semibold mb-2">Categories</h3>
+            <div class="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <a
+                href={`/tags/${tag}/page/1`}
+                  class="px-2 py-1 text-sm rounded bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
+                >
+                  {tag}
+                </a>
+              ))}
+           </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+    <Footer />
+	</body>
+</html>
