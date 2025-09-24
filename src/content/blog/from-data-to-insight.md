@@ -37,7 +37,7 @@ fviz_pca_biplot(pca_result,
                 col.ind = df$feces,
                 addEllipses = TRUE,
                 label = "var") +
-  geom_text_repel(aes(label = df$lokasi), size = 3.5)
+  geom_text_repel(aes(label = df$location), size = 3.5)
 ```
 
 To increase interpretability, we annotated each plot with relevant axes labels (e.g., "Jarak Ke Air"), adjusted margins, and grouped by meaningful site categories.
