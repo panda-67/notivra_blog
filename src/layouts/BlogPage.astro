@@ -31,7 +31,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={heroImage} />
   </head>
 
 	<body>
@@ -60,7 +60,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <article class="prose lg:col-span-3">
           <slot />
-        </article>
+          <div class="w-full flex justify-center">
+            <a href="https://notivra.com/services" class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 !text-white no-underline font-bold py-2 px-4 rounded-lg shadow hover:opacity-90">
+              ✨ Discover how we can empower your research
+            </a>
+          </div>
+       </article>
 
         <aside class="space-y-8 lg:col-span-1 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
           <section>
