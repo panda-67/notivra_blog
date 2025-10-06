@@ -2,7 +2,6 @@
 title: "From Data to Insight: Navigating the Ecological Landscape Through Analysis"
 description: "Reflections on our recent data science workflows—from spatial modeling to ecological interpretation—in the service of conservation."
 pubDate: 2025-07-21
-author: "Notivra Team"
 tags: [ecology, data-analysis, R, QGIS, PCA, ordinal-regression, conservation]
 heroImage: "../../assets/blog-placeholder-2.jpg"
 ---

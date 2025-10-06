@@ -24,9 +24,9 @@ const tagSet = new Set<string>();
 for (const post of allPosts) {
   (post.data.tags || []).forEach((tag: string) => tagSet.add(tag));
 }
-const tags = Array.from(tagSet).sort();
+const allTags = Array.from(tagSet).sort();
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, author, description, tags, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <html lang="en">
@@ -45,15 +45,33 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       )}
 
       <!-- Title & Meta -->
-      <header class="mb-8 py-8 text-center">
-        <h1 class="text:2xl lg:text-5xl font-serif font-bold">{title}</h1>
-        <div class="mt-2 text-sm text-gray-500">
-          <FormattedDate date={pubDate} />
-          {updatedDate && (
-            <span class="ml-2">· Last updated <FormattedDate date={updatedDate} /></span>
-          )}
+      <header class="mb-10 py-10 text-center">
+        <h1 class="text-3xl lg:text-5xl font-serif font-bold tracking-tight">{title}</h1>
+
+        <div class="mt-4 flex flex-wrap justify-center items-center gap-x-2 text-sm text-gray-500">
+          <span class="text-gray-600">
+            By <span class="font-medium text-gray-900">{author || 'Notivra Team'}</span>
+          </span>
+          <span class="hidden sm:inline">·</span>
+          <span>
+            <FormattedDate date={pubDate} />
+            {updatedDate && (
+              <span> (updated <FormattedDate date={updatedDate} />)</span>
+            )}
+          </span>
         </div>
-        <hr class="mt-4" />
+
+        {tags && tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap justify-center gap-2">
+            {tags.map(tag => (
+              <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-indigo-100 text-indigo-700 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <hr class="mt-10 border-gray-200" />
       </header>
 
       <!-- Grid layout -->
@@ -85,7 +103,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           <section>
             <h2 class="text-2xl font-semibold">Categories</h2>
             <div class="flex flex-wrap gap-2 mt-2">
-              {tags.map((tag) => (
+              {allTags.map((tag) => (
                 <a
                 href={`/tags/${tag}/page/1`}
                   class="px-2 py-1 text-sm rounded bg-gray-100 text-gray-700 hover:bg-gray-200 transition"

@@ -2,7 +2,6 @@
 title: "First Post"
 description: "Welcome to the Notivra blog — where clarity meets curiosity."
 pubDate: 2025-06-16
-author: "Notivra Team"
 heroImage: "../../assets/blog-placeholder-1.jpg"
 tags:
   - announcement
