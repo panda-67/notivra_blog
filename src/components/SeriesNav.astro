@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getSeries } from '../lib/series';
+
+type BlogData = CollectionEntry<'blog'>['data']
+type SeriesNavEntry = Awaited<ReturnType<typeof getSeries>>['navMap'][string];
+
+const data = Astro.props as BlogData;
+const { navMap } = data.series ? await getSeries(data.series) : { navMap: {} };
+const nav:SeriesNavEntry = navMap[data.slug] || {};
+---
+
+{(nav.prev || nav.next) && (
+  <nav class="series-nav mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 animate-fadeIn" >
+    {nav.prev ? (
+      <a
+        href={`/${nav.prev}`}
+        class="group relative flex flex-col justify-between p-5 rounded-xl border border-slate-200/10 
+              bg-gradient-to-br from-slate-50 to-slate-100 col-span-1 
+              shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+      >
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-indigo-400 transition-colors">
+          ← Previous
+        </span>
+        <span class="mt-2 text-base font-semibold text-slate-700 group-hover:text-indigo-400 line-clamp-2">
+          {nav.prevTitle}
+        </span>
+        <span
+          class="absolute inset-0 rounded-xl ring-1 ring-transparent group-hover:ring-indigo-400/30 transition-all"
+          aria-hidden="true"
+        ></span>
+      </a>
+    ) : <div class="col-span-1"></div>}
+
+    {nav.next && (
+      <a
+        href={`/${nav.next}`}
+        class="group relative flex flex-col justify-between p-5 rounded-xl border border-slate-200/10 
+              bg-gradient-to-bl from-slate-50 to-slate-100 col-span-1 
+              shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-right"
+      >
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-indigo-400 transition-colors">
+          Next →
+        </span>
+        <span class="mt-2 text-base font-semibold text-slate-700 group-hover:text-indigo-400 line-clamp-2">
+          {nav.nextTitle}
+        </span>
+        <span
+          class="absolute inset-0 rounded-xl ring-1 ring-transparent group-hover:ring-indigo-400/30 transition-all"
+          aria-hidden="true"
+        ></span>
+      </a>
+    )}
+  </nav>
+
+  // <nav class="series-nav flex justify-between mt-8 text-sm text-indigo-600">
+  //   {nav.prev ? (
+  //     <a href={`/${nav.prev}`} class="hover:font-semibold flex flex-col text-left">
+  //       ← Previous
+  //       <span class="font-semibold">{nav.prevTitle}</span>
+  //     </a>
+  //   ) : <span></span>}
+  //
+  //   {nav.next ? (
+  //     <a href={`/${nav.next}`} class="flex flex-col text-right">
+  //       Next →
+  //       <span class="font-semibold">{nav.nextTitle}</span>
+  //     </a>
+  //   ) : <span></span>}
+  // </nav>
+)}

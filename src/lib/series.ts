@@ -2,18 +2,15 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getSeries(series: string): Promise<{
   chapters: CollectionEntry<'blog'>[];
-  navMap: Record<string, { prev: string | null; next: string | null }>;
+  navMap: Record<string, { prev: string | null; next: string | null; prevTitle?: string; nextTitle?: string }>;
 }> {
-  // Load all posts in this series
   const posts = await getCollection('blog', ({ data }) => data.series === series);
 
-  // Exclude the series "index" file, regardless of its actual id or slug
   const chapters = posts.filter(
     (post) =>
       !post.id.endsWith('/index') && post.data.slug !== 'index' && post.id !== series
   );
 
-  // Sort chapters by pubDate
   chapters.sort((a, b) => {
     const orderA = a.data.order ?? Infinity;
     const orderB = b.data.order ?? Infinity;
@@ -21,12 +18,13 @@ export async function getSeries(series: string): Promise<{
     return a.data.pubDate.valueOf() - b.data.pubDate.valueOf();
   });
 
-  // Build navigation map
-  const navMap: Record<string, { prev: string | null; next: string | null }> = {};
+  const navMap: Record<string, { prev: string | null; next: string | null; prevTitle?: string; nextTitle?: string }> = {};
   chapters.forEach((ch, i) => {
     navMap[ch.id] = {
       prev: i > 0 ? chapters[i - 1].id : null,
       next: i < chapters.length - 1 ? chapters[i + 1].id : null,
+      prevTitle: i > 0 ? chapters[i - 1].data.title : undefined,
+      nextTitle: i < chapters.length - 1 ? chapters[i + 1].data.title : undefined,
     };
   });
 
