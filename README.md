@@ -1,62 +1,85 @@
-# Astro Starter Kit: Blog
+# 🪶 Notivra Insight
 
-```sh
+_Where knowledge meets craft. Where data learns to speak._
+
+Built with **Astro** — fast, modular, and minimal — Notivra Insight is the narrative engine behind Notivra’s publications: essays, tutorials, and serialized explorations of research, science, and digital craft.
+
+```bash
 pnpm create astro@latest -- --template blog
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> 🌒 **Note:** This project began from Astro’s Blog Starter Kit, but evolved into a fully structured content system for series-based publishing.
 
-Features:
+---
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+## ✨ Features
 
-## 🚀 Project Structure
+- 🧱 **Content Collections** for posts, insights, and multi-chapter series
+- 🪶 **Markdown & MDX** support — write with clarity, code with precision
+- ⚡ **Fast by design** — 100/100 Lighthouse performance
+- 🔎 **SEO-ready** — canonical URLs, OpenGraph, and sitemap included
+- 🧭 **Series navigation** — table of contents, next/previous chapter links
+- 🗞️ **RSS Feed** and structured metadata
+- 🎨 **Customizable layouts** with Tailwind and TypeScript
 
-Inside of your Astro project, you'll see the following folders and files:
+---
+
+## 🧩 Project Structure
 
 ```text
 ├── public/
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
+│   ├── components/
+│   ├── content/
+│   │   ├── blog/
+│   │   └── bookone/
+│   ├── layouts/
+│   └── pages/
 ├── astro.config.mjs
-├── README.md
 ├── package.json
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**Core idea:**
+Each Markdown or MDX file inside `src/content/blog` or `src/content/series` becomes a page.
+Series entries (`src/content/bookone/`) act as chapters in larger thematic arcs — indexed and cross-linked through a dynamic table of contents.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
+---
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+Run all commands from your project root:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| Command                   | Description                                         |
+| :--------------------------| :-------------------------------------------------- |
+| `pnpm install`             | Install dependencies                                |
+| `pnpm dev`                 | Start the local dev server at `localhost:4321`     |
+| `pnpm build`               | Build the production site to `./dist/`             |
+| `pnpm preview`             | Preview your build before deployment               |
+| `pnpm astro ...`           | Run Astro CLI commands                             |
+| `pnpm astro -- --help`     | Display help for all Astro commands                |
 
-## 👀 Want to learn more?
+---
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🧠 Concept
 
-## Credit
+> “Notivra Insight is not a blog. It’s a living index of intellect
+> where each series forms a book, and each post a page in a larger thought.”
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+- **Blog posts** → Standalone insights, essays, and updates.
+- **Series** → Thematic deep dives with chapter-based navigation and continuity.
+- **Index pages** → Unified feeds blending both, in chronological or thematic order.
+
+---
+
+## 🌍 Learn More
+
+- [Astro Documentation](https://docs.astro.build)
+- [Notivra Website](https://notivra.com)
+- [Join the Notivra Collective](mailto:info@notivra.com)
+
+---
+
+## 🪞 Credit
+
+Originally based on [Bear Blog](https://github.com/HermanMartinus/bearblog/) via Astro Starter Kit — rebuilt for clarity, purpose, and scientific storytelling by **Lord** and the **Notivra** team.
