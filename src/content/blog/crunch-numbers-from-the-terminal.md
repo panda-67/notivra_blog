@@ -1,5 +1,6 @@
 ---
 title: "Crunch Numbers from the Terminal: A Quick Guide to Stat CLI"
+slug: "crunch-numbers-from-the-terminal"
 description: "In this post, I’ll walk you through a simple example using a Markdown table as our dataset."
 pubDate: 2025-09-25
 author: "Admin"

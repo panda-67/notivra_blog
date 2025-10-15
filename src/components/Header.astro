@@ -7,11 +7,12 @@ import logoSrc from '../assets/logo.png';
 <header>
 	<nav>
     <a href="https://notivra.com">
-      <img src={logoSrc.src} alt="Notivra Logo" style={{height: "36px"}}/>
+      <img src={logoSrc.src} alt="Notivra Logo" loading="eager" decoding="async" height="36" width="auto" style={{height: "36px"}}/>
     </a>
     <div class="internal-links">
     	<!-- <HeaderLink href="/">Home</HeaderLink> -->
     	<HeaderLink href="/welcome">Welcome</HeaderLink>
+      <HeaderLink href="/" >All Post</HeaderLink>
     	<HeaderLink href="/about">About</HeaderLink>
     </div>
 		<h2 class="font-bold"><a href="/">{SITE_TITLE}</a></h2>

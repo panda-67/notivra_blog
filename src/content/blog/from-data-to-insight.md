@@ -1,5 +1,6 @@
 ---
 title: "From Data to Insight: Navigating the Ecological Landscape Through Analysis"
+slug: "from-data-to-insight"
 description: "Reflections on our recent data science workflows—from spatial modeling to ecological interpretation—in the service of conservation."
 pubDate: 2025-07-21
 tags: [ecology, data-analysis, R, QGIS, PCA, ordinal-regression, conservation]

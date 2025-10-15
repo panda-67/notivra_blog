@@ -1,5 +1,6 @@
 ---
 title: "Introducing Notivra"
+slug: "introduction"
 description: "The birth of a bold academic venture from the roots of scientific grit."
 pubDate: 2025-06-18
 author: "Admin Notivra"

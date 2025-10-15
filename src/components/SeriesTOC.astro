@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getSeries } from '../lib/series';
+
+type BlogEntry = CollectionEntry<'blog'>;
+type BlogData = BlogEntry['data'];
+
+// The `Astro.props` type needs to be explicitly declared
+const data = Astro.props as BlogData;
+
+// Prepare toc array
+let toc: BlogEntry[] = [];
+
+// Only fetch if the post belongs to a series
+if (data.series) {
+  const result = await getSeries(data.series);
+  toc = result.chapters;
+}
+---
+
+{toc.length > 0 && (
+  <section class="series-toc mb-12">
+    <h3 class="text-2xl font-semibold">
+      {data.seriesTitle ?? data.series}
+    </h3>
+    <h4 class="text-lg font-medium !mb-2">
+      Table of Content
+    </h4>
+    <ol class="list-decimal list-inside space-y-1 text-sm">
+      {toc.map((ch) => (
+        <li
+          class={ch.data.slug === data.slug
+            ? 'font-semibold text-indigo-400'
+            : 'text-slate-400'}
+        >
+          <a href={`/${ch.id}`}>
+            {ch.data.title}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+)}
+

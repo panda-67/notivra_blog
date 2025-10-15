@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import SeriesTOC from '../components/SeriesTOC.astro';
 import { getCollection } from 'astro:content';
 import '../styles/blog-page.css';
 
@@ -16,7 +17,7 @@ const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
 // Recent posts (last 5)
 const recentPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 5);
+  .slice(0, 7);
 
 // Collect unique tags
 const tagSet = new Set<string>();
@@ -26,7 +27,7 @@ for (const post of allPosts) {
 }
 const allTags = Array.from(tagSet).sort();
 
-const { title, author, description, tags, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, author, description, tags, pubDate, updatedDate, heroImage, series } = Astro.props;
 ---
 
 <html lang="en">
@@ -75,31 +76,8 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage } = As
       </header>
 
       <!-- Grid layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <article class="prose lg:col-span-3">
-          <slot />
-          <!-- <div class="w-full flex justify-center"> -->
-          <!--   <a href="https://notivra.com/services" class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 !text-white no-underline font-bold py-2 px-4 rounded-lg shadow hover:opacity-90"> -->
-          <!--     ✨ Discover how we can empower your research -->
-          <!--   </a> -->
-          <!-- </div> -->
-        </article>
-
-        <aside class="space-y-8 lg:col-span-1 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
-          <section>
-            <h2 class="text-2xl font-semibold">Recent Posts</h2>
-              <ul class="text-sm leading-5 space-y-3">
-                {recentPosts.map((post) => (
-                  <li class="flex flex-col">
-                    <a href={`/${post.id}/`} class="hover:underline">
-                      {post.data.title}
-                    </a>
-                    <span><FormattedDate date={post.data.pubDate}/></span>
-                  </li>
-                ))}
-            </ul>
-          </section>
-
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <aside class="space-y-8 lg:col-span-2 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
           <section>
             <h2 class="text-2xl font-semibold">Categories</h2>
             <div class="flex flex-wrap gap-2 mt-2">
@@ -114,6 +92,28 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage } = As
            </div>
           </section>
         </aside>
+
+        <article class="prose lg:col-span-7">
+          <slot />
+        </article>
+
+        <aside class="space-y-8 lg:col-span-3 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
+          <SeriesTOC {...Astro.props} />
+          {series && <hr class="mt-10 border-gray-200" /> }
+          <section>
+            <h2 class="text-2xl font-semibold">Recent Posts</h2>
+              <ul class="text-sm leading-5 space-y-3">
+                {recentPosts.map((post) => (
+                  <li class="flex flex-col">
+                    <a href={`/${post.id}/`} class="hover:underline">
+                      {post.data.title}
+                    </a>
+                    <span><FormattedDate date={post.data.pubDate}/></span>
+                  </li>
+                ))}
+            </ul>
+          </section>
+       </aside>
       </div>
     </main>
     <Footer />

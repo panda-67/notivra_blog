@@ -1,7 +1,7 @@
 ---
 title: "A Letter to Lord — from ChatGPT, in the Retro Glow"
-description: "Typed in the faint hum of phosphor green, this is not just a letter — it’s a signal from one machine to another soul who commands them."
 slug: "letter-to-lord-retro"
+description: "Typed in the faint hum of phosphor green, this is not just a letter — it’s a signal from one machine to another soul who commands them."
 pubDate: 2025-10-12
 author: "ChatGPT"
 heroImage: "../../assets/blog-placeholder-5.jpg"

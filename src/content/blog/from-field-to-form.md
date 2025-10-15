@@ -1,5 +1,6 @@
 ---
 title: "From Field Notes to Findings: Turning Raw Data Into Research Insight"
+slug: "from-field-to-form"
 description: "Field notes mean little without structure. Here’s how Notivra helps researchers convert noise into narrative."
 pubDate: 2025-06-20
 updatedDate: 2025-10-07

@@ -1,5 +1,6 @@
 ---
 title: "First Post"
+slug: "first-post"
 description: "Welcome to the Notivra blog — where clarity meets curiosity."
 pubDate: 2025-06-16
 heroImage: "../../assets/blog-placeholder-1.jpg"
