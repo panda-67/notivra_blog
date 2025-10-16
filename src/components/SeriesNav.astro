@@ -3,7 +3,6 @@ import type { CollectionEntry } from 'astro:content';
 import { getSeries, getRelatedPosts } from '../lib/series';
 
 type BlogData = CollectionEntry<'blog'>['data']
-type SeriesNavEntry = Awaited<ReturnType<typeof getSeries>>['navMap'][string];
 
 const data = Astro.props as BlogData;
 
@@ -15,8 +14,6 @@ if (data.series) {
 } else {
   related = await getRelatedPosts({...data});
 }
-
-console.log("Related: ", related);
 ---
 
 {(nav?.prev || nav?.next) ? (
