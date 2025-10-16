@@ -55,7 +55,7 @@ main {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
-	padding: 3em 1em;
+	padding: 3em 0.6em;
 }
 h1,
 h2,
@@ -125,7 +125,7 @@ hr {
 		font-size: 18px;
 	}
 	main {
-		padding: 1em;
+		padding: 0.6em;
 	}
 }
 

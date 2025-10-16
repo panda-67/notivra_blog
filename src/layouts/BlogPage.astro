@@ -38,7 +38,7 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
 
 	<body>
 		<Header />
-    <main class="container mx-auto">
+    <main>
       <!-- Hero -->
       {heroImage && (
         <div class="hero-image lg:px-32 mb-6">
@@ -65,7 +65,7 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
 
         {tags && tags.length > 0 && (
           <div class="mt-4 flex flex-wrap justify-center gap-2">
-            {tags.map(tag => (
+          {tags.map((tag:string) => (
               <span class="px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-indigo-100 text-indigo-700 rounded-full">
                 {tag}
               </span>

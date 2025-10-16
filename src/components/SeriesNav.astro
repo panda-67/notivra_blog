@@ -1,16 +1,26 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getSeries } from '../lib/series';
+import { getSeries, getRelatedPosts } from '../lib/series';
 
 type BlogData = CollectionEntry<'blog'>['data']
 type SeriesNavEntry = Awaited<ReturnType<typeof getSeries>>['navMap'][string];
 
 const data = Astro.props as BlogData;
-const { navMap } = data.series ? await getSeries(data.series) : { navMap: {} };
-const nav:SeriesNavEntry = navMap[data.slug] || {};
+
+let nav, related:any[] = [];
+
+if (data.series) {
+  const { navMap } = await getSeries(data.series);
+  nav = navMap[data.slug] || { navMap: {} };
+} else {
+  related = await getRelatedPosts({...data});
+}
+
+console.log("Related: ", related);
 ---
 
-{(nav.prev || nav.next) && (
+{(nav?.prev || nav?.next) ? (
+  // --- SERIES NAVIGATION ---
   <nav class="series-nav mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 animate-fadeIn" >
     {nav.prev ? (
       <a
@@ -52,20 +62,25 @@ const nav:SeriesNavEntry = navMap[data.slug] || {};
       </a>
     )}
   </nav>
-
-  // <nav class="series-nav flex justify-between mt-8 text-sm text-indigo-600">
-  //   {nav.prev ? (
-  //     <a href={`/${nav.prev}`} class="hover:font-semibold flex flex-col text-left">
-  //       ← Previous
-  //       <span class="font-semibold">{nav.prevTitle}</span>
-  //     </a>
-  //   ) : <span></span>}
-  //
-  //   {nav.next ? (
-  //     <a href={`/${nav.next}`} class="flex flex-col text-right">
-  //       Next →
-  //       <span class="font-semibold">{nav.nextTitle}</span>
-  //     </a>
-  //   ) : <span></span>}
-  // </nav>
+) : (
+  // --- RELATED POSTS FALLBACK ---
+  related.length > 0 && (
+    <section class="related-posts mt-16 flex flex-col sm:flex-row justify-between gap-4 sm:gap-6">
+      {related.map((post, i) => (
+        <a
+          href={`/${post.data.slug}`}
+          class={`group relative flex flex-col justify-between p-5 rounded-xl border border-slate-200/10
+                 bg-gradient-to-${i === 0 ? 'br' : 'bl'} from-slate-50 to-slate-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 
+                 transition-all duration-300 sm:max-w-sm w-full ${i === 1 ? 'text-right sm:ml-auto' : 'text-left'}`}
+        >
+          <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-indigo-400">
+            {i === 0 ? 'Related' : 'Also read'}
+          </span>
+          <span class="mt-2 text-base font-semibold text-slate-700 group-hover:text-indigo-400 line-clamp-2">
+            {post.data.title}
+          </span>
+        </a>
+      ))}
+    </section>
+  )
 )}

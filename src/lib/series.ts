@@ -31,6 +31,24 @@ export async function getSeries(series: string): Promise<{
   return { chapters, navMap };
 }
 
+export async function getRelatedPosts({ tags, slug, }: {
+  tags?: string[];
+  slug: string;
+}) {
+  const allPosts = await getCollection('blog');
+  const related = allPosts
+    .filter((p) => p.id !== slug)
+    .map((p) => ({
+      ...p,
+      score: (p.data.tags ?? []).filter((t) => (tags ?? []).includes(t)).length,
+    }))
+    .filter((p) => p.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 2);
+
+  return related;
+}
+
 export async function getAllSeries() {
   const all = await getCollection('blog');
   return [...new Set(all.map(p => p.data.series).filter(Boolean))];
