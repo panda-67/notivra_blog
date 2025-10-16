@@ -42,7 +42,7 @@ In R, you describe *relations*.
 A vector is not a loop — it’s a **container of intent**.  
 When you square a vector, you’re not saying “for each element, square it.”  
 You’re saying:  
-> “Apply this operation to the entire idea of the data.”
+> Apply this operation to the entire idea of the data.
 
 ```r
 numbers <- c(2, 3, 5, 7, 11)
@@ -117,4 +117,4 @@ That’s why tidyverse code reads like poetry — concise, declarative, expressi
 
 ---
 
-> *"When you think in vectors, you stop commanding data — you start conversing with it."*
+> *When you think in vectors, you stop commanding data — you start conversing with it.*

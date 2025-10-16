@@ -34,7 +34,7 @@ mean(c(2, 3, 5, 7, 11))
 ```
 
 This isn’t a loop or a class method. It’s **a statement of intent**:  
-> “Take these numbers, and return their essence.”
+> Take these numbers, and return their essence.
 
 ---
 
@@ -89,4 +89,4 @@ It needs better thinkers — and R trains you to think in structure, not chaos.
 
 ---
 
-> *"To master R is not to memorize commands, but to see the grammar of thought hidden in data."*  
+> *To master R is not to memorize commands, but to see the grammar of thought hidden in data.*  

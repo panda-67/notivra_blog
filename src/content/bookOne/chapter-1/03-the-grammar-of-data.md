@@ -12,7 +12,7 @@ order: 3
 
 # The Grammar of Data
 
-> “Data becomes knowledge only when language makes it visible.”
+> Data becomes knowledge only when language makes it visible.
 
 ## Prelude — Why Grammar Matters
 
