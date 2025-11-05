@@ -2,6 +2,7 @@
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import logoSrc from '../assets/logo.png';
+import BlogSearch from '../components/BlogSearch.jsx';
 ---
 
 <header>
@@ -9,13 +10,18 @@ import logoSrc from '../assets/logo.png';
     <a href="https://notivra.com">
       <img src={logoSrc.src} alt="Notivra Logo" loading="eager" decoding="async" height="36" width="auto" style={{height: "36px"}}/>
     </a>
-    <div class="internal-links">
-    	<!-- <HeaderLink href="/">Home</HeaderLink> -->
-    	<HeaderLink href="/welcome">Welcome</HeaderLink>
-      <HeaderLink href="/" >All Post</HeaderLink>
-    	<HeaderLink href="/about">About</HeaderLink>
+    <div class="flex items-baseline">
+      <div class="internal-links">
+        <!-- <HeaderLink href="/">Home</HeaderLink> -->
+        <HeaderLink href="/welcome">Welcome</HeaderLink>
+        <HeaderLink href="/" >All Post</HeaderLink>
+        <HeaderLink href="/about">About</HeaderLink>
+      </div>
+      <div class="px-3">
+        <BlogSearch client:load />
+      </div>
     </div>
-		<h2 class="font-bold"><a href="/">{SITE_TITLE}</a></h2>
+    <h2 class="font-bold"><a href="/">{SITE_TITLE}</a></h2>
 		<!-- <div class="social-links"> -->
 		<!-- 	<a href="https://m.webtoo.ls/@astro" target="_blank"> -->
 		<!-- 		<span class="sr-only">Follow Astro on Mastodon</span> -->
