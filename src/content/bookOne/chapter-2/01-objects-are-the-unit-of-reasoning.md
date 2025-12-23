@@ -1,7 +1,7 @@
 ---
 title: "Objects Are The Unit of Reasoning"
 slug: "objects-are-the-unit-of-reasoning"
-description: "R isn't dying. It's refining. Here's why the quiet power of R still defines the scientific mind in the age of Python and AI."
+description: "Most frustration with R comes from importing habits from other languages: step-by-step execution, mutable variables, hidden state. R rejects this worldview quietly, then punishes you later."
 heroImage: "../../../assets/blog-placeholder-5.jpg"
 tags: ["R", "data analysis", "objects", "structure", "Notivra Chronicles"]
 pubDate: "2025-12-24"
