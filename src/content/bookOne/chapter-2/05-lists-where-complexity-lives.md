@@ -1,7 +1,7 @@
 ---
 title: "Lists: Where Complexity Lives"
 slug: "lists-where-complexity-lives"
-description: "A data frame is nothing more—and nothing less—than a collection of vectors that: - share the same length - are aligned by position - are interpreted together"
+description: "Lists are where R stops pretending to be easy and reveals what it actually is:  a language built to represent complex, nested, uneven reality without flattening it."
 heroImage: "../../../assets/blog-placeholder-3.jpg"
 tags: ["R", "data analysis", "lists", "Notivra Chronicles"]
 pubDate: "2025-12-28"
