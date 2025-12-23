@@ -5,6 +5,7 @@
   - Data as Objects, Analysis as Transformation
   - The Reproducible Scientist
   - From Code To Insight
+
 -- Chapter 2: Objects, Structure, and the Shape of Thought
   - Objects Are the Unit of Reasoning
   - Names Are Handles, Not Boxes
