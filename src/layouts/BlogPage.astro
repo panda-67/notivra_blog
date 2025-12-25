@@ -1,16 +1,20 @@
 ---
 import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import SeriesTOC from '../components/SeriesTOC.astro';
+import PostTOC from '../components/PostTOC.astro';
 import SeriesNav from '../components/SeriesNav.astro';
 import { getCollection } from 'astro:content';
 import '../styles/blog-page.css';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = {
+  data: CollectionEntry<'blog'>['data'];
+  headings: []
+};
 
 // Get all blog posts
 const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
@@ -28,7 +32,9 @@ for (const post of allPosts) {
 }
 const allTags = Array.from(tagSet).sort();
 
-const { title, author, description, tags, pubDate, updatedDate, heroImage, series } = Astro.props;
+const {data, headings} = Astro.props;
+
+const { title, author, description, tags, pubDate, updatedDate, heroImage, series } = data;
 ---
 
 <html lang="en">
@@ -78,7 +84,14 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
 
       <!-- Grid layout -->
       <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Left -->
         <aside class="hidden md:block space-y-8 lg:col-span-2 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
+          {headings && (
+            <div class="md:sticky top-16 bg-white/90">
+              <PostTOC headings={headings} minDepth={2} maxDepth={3} />
+              <hr class="mt-10 border-gray-200" />
+            </div>
+          )}
           <section>
             <h2 class="text-2xl font-semibold">Categories</h2>
             <div class="flex flex-wrap gap-2 mt-2">
@@ -94,15 +107,17 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
           </section>
         </aside>
 
-        <article class="prose lg:col-span-7">
+        <!-- Main -->
+        <article class="prose lg:col-span-7 [&_h2]:scroll-mt-16 [&_h3]:scroll-mt-16">
           <slot />
           <SeriesNav {...Astro.props} />
         </article>
 
+        <!-- Right -->
         <aside class="space-y-8 lg:col-span-3 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
           {series && (
-          <div class="md:sticky top-16 bg-white/80">
-              <SeriesTOC {...Astro.props} />
+            <div class="md:sticky top-16 bg-white/80">
+              <SeriesTOC {...data} />
               <hr class="mt-10 border-gray-200" />
             </div>
           )}

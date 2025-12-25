@@ -1,0 +1,105 @@
+---
+export type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
+interface Props {
+  headings: Heading[];
+  minDepth?: number;
+  maxDepth?: number;
+  title?: string;
+}
+
+const {
+  headings,
+  minDepth = 2,
+  maxDepth = 3,
+  title = 'On this page',
+} = Astro.props;
+
+const toc = headings.filter(
+  (h) => h.depth >= minDepth && h.depth <= maxDepth
+);
+---
+
+{toc.length > 0 && (
+  <nav class="post-toc mb-12">
+    <h3 class="text-2xl font-semibold mb-3">
+      {title}
+    </h3>
+
+    <ol class="list-decimal list-outside space-y-1 text-sm px-3">
+      {toc.map((h) => (
+        <li class={h.depth > minDepth ? 'ml-4 text-slate-400' : 'text-slate-300'}>
+         <a
+            href={`#${h.slug}`}
+            data-toc-link={h.slug}
+            class="hover:text-indigo-400 transition"
+          >
+            {h.text}
+          </a> 
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const headings = [...document.querySelectorAll('article h2[id], article h3[id]')];
+    const links = [...document.querySelectorAll('[data-toc-link]')];
+
+    if (!headings.length) {
+      console.warn('TOC: no headings found');
+      return;
+    }
+
+    const setActive = (id:any) => {
+      links.forEach(link => {
+        const active = link.dataset.tocLink === id;
+        link.classList.toggle('text-indigo-400', active);
+        link.classList.toggle('font-semibold', active);
+        link.classList.toggle('text-slate-400', !active);
+      });
+    };
+
+    // 1️⃣ Highlight immediately on TOC click
+    document.querySelectorAll('[data-toc-link]').forEach(link => {
+      link.addEventListener('click', () => {
+        setActive(link.dataset.tocLink);
+      });
+    });
+
+    // 2️⃣ Highlight on direct hash navigation / reload
+    window.addEventListener('hashchange', () => {
+      const id = location.hash.replace('#', '');
+      if (id) setActive(id);
+    });
+
+    // 3️⃣ Highlight on initial load (if URL has hash)
+    if (location.hash) {
+      setActive(location.hash.replace('#', ''));
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length) {
+          setActive(visible[0].target.id);
+        }
+      },
+      {
+        rootMargin: '-25% 0px -60% 0px',
+        threshold: 0,
+      }
+    );
+
+    headings.forEach(h => observer.observe(h));
+  });
+</script>
+
