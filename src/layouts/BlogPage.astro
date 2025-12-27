@@ -110,7 +110,7 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
         <!-- Main -->
         <article class="prose lg:col-span-7 [&_h2]:scroll-mt-16 [&_h3]:scroll-mt-16">
           <slot />
-          <SeriesNav {...Astro.props} />
+          <SeriesNav {...data} />
         </article>
 
         <!-- Right -->

@@ -1,14 +1,16 @@
 ---
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import Layout from '../layouts/BlogPage.astro';
+
+const data = {
+    title: "About Us",
+    description: "Notivra Insight — powering academic journeys with data, clarity, and craft.",
+    pubDate: new Date('September 24 2025'),
+    heroImage: AboutHeroImage
+};
 ---
 
-<Layout
-	title="About Us"
-	description="Notivra Insight — powering academic journeys with data, clarity, and craft."
-	pubDate={new Date('September 24 2025')}
-	heroImage={AboutHeroImage}
->
+<Layout data={data} >
 	<div class="space-y-8">
 		<div class="flex items-start gap-4">
 			<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

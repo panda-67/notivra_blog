@@ -26,6 +26,7 @@ The alternative worldview is simple but demanding:
 ## Objects Exist Independently of Action
 
 Consider the first meaningful act in R:
+
 ```r
 x <- c(3, 6, 9)
 ```
@@ -34,6 +35,7 @@ This line does not do anything in the procedural sense.
 No computation is performed. No analysis begins.  
 An object comes into existence.  
 From R’s perspective, the most important questions are not:
+
 - What are the values?  
 but:  
 - What is this thing?  
@@ -42,7 +44,7 @@ but:
 
 That is why the first tools of a serious analyst are not modeling functions, but inspection:
 
-```r 
+```r
 typeof(x)
 length(x)
 class(x)
@@ -56,7 +58,7 @@ Until these questions are answered, every next step is guesswork.
 
 R allows the same values to carry radically different meanings.
 
-```r 
+```r
 x <- c(1, 2, 3)
 y <- factor(c(1, 2, 3))
 ```
@@ -64,7 +66,7 @@ y <- factor(c(1, 2, 3))
 To a human eye, these look interchangeable.  
 To R, they are not even related.
 
-```r 
+```r
 typeof(x); class(x)
 typeof(y); class(y)
 ```
@@ -83,7 +85,7 @@ Confuse the two, and your analysis becomes fiction with confidence intervals.
 
 R encourages a bias toward immutability.
 
-```r 
+```r
 x <- c(2, 4, 6)
 y <- x / 2
 ```
@@ -107,14 +109,14 @@ Pipelines work because each step is a visible state transition, not a hidden sid
 A function in R is not an action.
 It is a mapping between objects.
 
-```r 
+```r
 mean(x)
 ```
 
 Input: a numeric vector.
 Output: another vector—length one, but still a vector.
 
-```r 
+```r
 typeof(mean(x))
 ```
 
@@ -127,7 +129,7 @@ Consistency beats convenience.
 
 This is where R quietly becomes powerful.
 
-```r 
+```r
 typeof(mean)
 class(mean)
 ```
@@ -148,7 +150,7 @@ You are not calling tools—you are assembling transformations.
 
 Experienced R users inspect constantly:
 
-```r 
+```r
 str()
 class()
 length()
@@ -159,7 +161,7 @@ Not because they forget—but because they refuse to assume.
 Assumption is the enemy of reproducibility.  
 Inspection is its antidote.
 
---- 
+---
 
 Every analysis failure in R can be traced to a single mistake:
 >You acted before understanding the object.

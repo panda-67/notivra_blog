@@ -3,15 +3,14 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import solidJs from '@astrojs/solid-js';
-import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://insights.notivra.com',
-  integrations: [mdx(), sitemap(), solidJs()],
-  outDir: '../notivra-php/public_html/blog',
+  site: 'http://print.local',
+  integrations: [mdx(), solidJs()],
+  outDir: './press/build',
+  output: 'static',
   base: '/',
 
   vite: {
