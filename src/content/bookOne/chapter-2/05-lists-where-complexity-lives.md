@@ -10,7 +10,7 @@ seriesTitle: "Objects, Structure, and the Shape of Thought"
 order: 5
 ---
 
-# Lists: Where Complexity Lives
+**Lists: Where Complexity Lives**
 
 Lists are where R stops pretending to be easy and reveals what it actually is:  
 a language built to represent complex, nested, uneven reality without flattening it.
@@ -22,12 +22,12 @@ Understand lists, and your tools will finally fit the questions.
 
 ---
 
-## A List Is Not a Bigger Vector
+### A List Is Not a Bigger Vector
 
 A vector is uniform.
 A list is honestly heterogeneous.
 
-```r 
+```r
 x <- list(
   count = 42,
   species = c("A", "B", "C"),
@@ -37,7 +37,7 @@ x <- list(
 
 Ask R what this is:
 
-```r 
+```r
 str(x)
 ```
 
@@ -48,7 +48,7 @@ Each element can have its own type, length, and meaning.
 
 ---
 
-## Why R Is Built on Lists
+### Why R Is Built on Lists
 
 Once you see lists clearly, a quiet revelation follows:
 
@@ -65,11 +65,11 @@ It embraces it.
 
 ---
 
-## Access Is Semantic, Not Positional
+### Access Is Semantic, Not Positional
 
 Lists reward clarity.
 
-```r 
+```r
 x$species
 ```
 
@@ -81,11 +81,11 @@ You can index numerically—but that is a smell unless order truly matters.
 
 ---
 
-## Lists Enable Abstraction
+### Lists Enable Abstraction
 
 Lists allow you to return more than one thing—cleanly.
 
-```r 
+```r
 analyze <- function(data) {
   list(
     mean = mean(data),
@@ -100,13 +100,14 @@ This is how serious analysis scales without global variables or side effects.
 
 ---
 
-## Nested Lists Reflect Reality
+### Nested Lists Reflect Reality
 
 Real data is rarely flat.  
 APIs, JSON, model outputs, survey instruments—
 all arrive nested.
 
 Lists allow you to:
+
 - preserve hierarchy
 - delay flattening
 - inspect before simplifying
@@ -114,7 +115,7 @@ Lists allow you to:
 
 Flattening too early is how meaning disappears.
 
-## The Reader’s Psychological Barrier
+### The Reader’s Psychological Barrier
 
 Most readers resist lists because:
 

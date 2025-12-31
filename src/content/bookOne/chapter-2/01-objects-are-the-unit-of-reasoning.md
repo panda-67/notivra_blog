@@ -10,7 +10,7 @@ seriesTitle: "Objects, Structure, and the Shape of Thought"
 order: 1
 ---
 
-# Objects Are The Unit of Reasoning
+**Objects Are The Unit of Reasoning**
 
 R does not reward speed.
 It rewards correct mental models.
@@ -23,7 +23,7 @@ The alternative worldview is simple but demanding:
 
 ---
 
-## Objects Exist Independently of Action
+### Objects Exist Independently of Action
 
 Consider the first meaningful act in R:
 
@@ -54,7 +54,7 @@ Until these questions are answered, every next step is guesswork.
 
 ---
 
-## Same Data, Different Objects, Different Truths
+### Same Data, Different Objects, Different Truths
 
 R allows the same values to carry radically different meanings.
 
@@ -81,7 +81,7 @@ Confuse the two, and your analysis becomes fiction with confidence intervals.
 
 ---
 
-## Transformation Creates New States of Meaning
+### Transformation Creates New States of Meaning
 
 R encourages a bias toward immutability.
 
@@ -104,7 +104,7 @@ Pipelines work because each step is a visible state transition, not a hidden sid
 
 ---
 
-## Functions Are Object Transformers
+### Functions Are Object Transformers
 
 A function in R is not an action.
 It is a mapping between objects.
@@ -125,7 +125,7 @@ Consistency beats convenience.
 
 ---
 
-## Functions Themselves Are Objects
+### Functions Themselves Are Objects
 
 This is where R quietly becomes powerful.
 
@@ -146,7 +146,7 @@ You are not calling tools—you are assembling transformations.
 
 ---
 
-## Inspection Is a Habit, Not a Phase
+### Inspection Is a Habit, Not a Phase
 
 Experienced R users inspect constantly:
 

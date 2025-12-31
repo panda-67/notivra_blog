@@ -10,7 +10,7 @@ seriesTitle: "Objects, Structure, and the Shape of Thought"
 order: 6
 ---
 
-# Structure Precedes Power
+**Structure Precedes Power**
 
 Power in R does not come from knowing more functions.
 It comes from knowing what you are holding before you touch it.
@@ -23,7 +23,7 @@ They are caused by acting on objects whose structure was never understood.
 
 ---
 
-## Structure Is the First Question
+### Structure Is the First Question
 
 Before transformation, before visualization, before modeling, the responsible analyst asks:
 
@@ -37,11 +37,11 @@ They determine what operations are valid and which are nonsense.
 
 ---
 
-## Inspection Is How You Think in R
+### Inspection Is How You Think in R
 
 R provides blunt, honest tools:
 
-```r 
+```r
 str(obj)
 class(obj)
 typeof(obj)
@@ -57,7 +57,7 @@ It is negligence.
 
 ---
 
-## Structure Explains “Strange” Behavior
+### Structure Explains “Strange” Behavior
 
 When R surprises you, it is almost never being inconsistent.
 
@@ -73,13 +73,14 @@ you misunderstood the structure.
 
 ---
 
-## Why Power Tools Come Later
+### Why Power Tools Come Later
 
 Tidy evaluation.  
 Functional programming.  
 Modeling frameworks.
 
 All of them assume structural literacy. Without it:
+
 - abstraction becomes fragile
 - code becomes incantation
 - results become untrustworthy
@@ -87,7 +88,7 @@ All of them assume structural literacy. Without it:
 Structure is not optional groundwork.  
 It is the price of admission.
 
-## The Discipline That Scales
+### The Discipline That Scales
 
 Experienced R users inspect reflexively—not because they doubt themselves, but because they respect complexity.
 

@@ -10,8 +10,7 @@ seriesTitle: The R Mindset — Thinking in Data
 order: 5
 ---
 
-
-# The Reproducible Scientist
+**The Reproducible Scientist**
 
 > If your science can’t be repeated, it’s not science — it’s a story that can’t be told again.
 
@@ -20,7 +19,7 @@ Reproducibility is not a luxury — it’s the oxygen of modern data work.
 
 ---
 
-## 🗂 The Anatomy of a Reproducible Project
+### 🗂 The Anatomy of a Reproducible Project
 
 Order is not bureaucracy. It’s mercy for your future self.
 A clean project structure turns chaos into clarity:
@@ -44,7 +43,7 @@ This is your lab bench — every tool, every specimen in its place.
 
 ---
 
-## 📄 The Power of R Markdown and Quarto
+### 📄 The Power of R Markdown and Quarto
 
 Reproducibility isn’t just about code — it’s **about narrative**.
 
@@ -65,7 +64,7 @@ In this single file, code and reasoning live together — no more _“forgot whi
 
 ---
 
-## 🧮 Version Control as Memory
+### 🧮 Version Control as Memory
 
 Git is not only for programmers. It’s for _scientists with memory loss_.
 
@@ -77,7 +76,7 @@ Each commit is a fossil record of your intellect.
 
 ---
 
-## 🔁 From Projects to Pipelines
+### 🔁 From Projects to Pipelines
 
 As your work grows, reproducibility means automation.
 Tools like `targets` or `drake` let you define **what depends on what**, and rebuild only what changes.
@@ -96,14 +95,14 @@ Now your analysis isn’t a one-off — it’s a **machine of truth**.
 
 ---
 
-## 🧠 Reflection
+### 🧠 Reflection
 
 > What would happen if someone reran your project a year from now?  
 > Would they get the same story?
 
 ---
 
-### 📘 Try It Yourself
+#### 📘 Try It Yourself
 
 1. Create a new RStudio Project.  
 2. Organize it with `data/`, `R/`, and `outputs/`.  
@@ -114,7 +113,7 @@ You’ve just taken your first step from chaos to clarity.
 
 ---
 
-### 🔗 Further Reading
+#### 🔗 Further Reading
 
 - [Project-Oriented Workflow](https://r4ds.hadley.nz/workflow-scripts.html)
 - [Yihui Xie, _R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/)

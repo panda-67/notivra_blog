@@ -10,7 +10,7 @@ seriesTitle: "Objects, Structure, and the Shape of Thought"
 order: 2
 ---
 
-# Names are Handles, Not Boxes
+**Names are Handles, Not Boxes**
 
 Most people believe this lie:
 >A variable stores a value.  
@@ -23,11 +23,11 @@ If you grasp it, memory behavior, copying, and side effects suddenly make sense.
 
 ---
 
-## Assignment Is Binding, Not Storage
+### Assignment Is Binding, Not Storage
 
 Consider the familiar line:
 
-```r 
+```r
 x <- c(10, 20, 30)
 ```
 
@@ -35,7 +35,7 @@ This does not place numbers inside x.
 It binds the name x to an object: a numeric vector of length three.  
 You can verify this by creating another name:
 
-```r 
+```r
 y <- x
 ```
 
@@ -45,17 +45,17 @@ One object.
 
 ---
 
-## Copying Happens Only When Meaning Changes
+### Copying Happens Only When Meaning Changes
 
 Now watch carefully:
 
-```r 
+```r
 y[1] <- 99
 ```
 
 After this line:
 
-```r 
+```r
 x
 y
 ```
@@ -73,7 +73,7 @@ A fair trade in scientific work.
 
 ---
 
-## Why This Feels Strange at First
+### Why This Feels Strange at First
 
 Users coming from imperative languages expect:
 
@@ -82,6 +82,7 @@ Users coming from imperative languages expect:
 - state as fluid
 
 R expects:
+
 - names as references
 - updates as transformations
 - state as explicit
@@ -97,11 +98,11 @@ Different questions. Different mastery.
 
 ---
 
-## Rebinding Is Not the Same as Modification
+### Rebinding Is Not the Same as Modification
 
 Observe the difference:
 
-```r 
+```r
 x <- c(1, 2, 3)
 x <- x * 2
 ```
@@ -115,7 +116,7 @@ R treats history as disposable—but only when you say so explicitly.
 
 ---
 
-## Why This Design Matters for Analysis
+### Why This Design Matters for Analysis
 
 This naming model:
 
@@ -126,7 +127,7 @@ This naming model:
 
 It is the quiet reason why complex analyses remain comprehensible months later.
 
-## The Mental Shift That Unlocks R
+### The Mental Shift That Unlocks R
 
 Stop asking:
 

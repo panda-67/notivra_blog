@@ -10,14 +10,14 @@ seriesTitle: The R Mindset — Thinking in Data
 order: 2
 ---
 
-# Thinking in Vectors, Not Loops
+**Thinking in Vectors, Not Loops**
 
 R doesn’t *iterate* — it *transforms*.  
 That’s the first truth to swallow if you want to stop fighting R and start flowing with it.
 
 ---
 
-## The Loop Mindset
+### The Loop Mindset
 
 Most programmers come to R from Python, C, or Java — languages that live on loops.  
 You take a list, run a loop, mutate an element, and build results piece by piece.  
@@ -37,7 +37,7 @@ In R, you describe *relations*.
 
 ---
 
-## The Vector Mindset
+### The Vector Mindset
 
 A vector is not a loop — it’s a **container of intent**.  
 When you square a vector, you’re not saying “for each element, square it.”  
@@ -56,7 +56,7 @@ Just **transformation** — clean, readable, fast.
 
 ---
 
-## Why This Matters
+### Why This Matters
 
 Vectorization isn’t just about performance.  
 It’s a mental shift from **how** to **what**.
@@ -72,7 +72,7 @@ You’re describing a system of transformations, not writing machinery.
 
 ---
 
-## Building Intuition
+### Building Intuition
 
 Let’s stretch it a bit.
 
@@ -90,7 +90,7 @@ You can’t think that way in most languages — but in R, it’s the natural or
 
 ---
 
-## The Tidyverse Connection
+### The Tidyverse Connection
 
 The entire **tidyverse** rests on this principle.  
 Functions like `mutate()`, `filter()`, `summarize()` — they’re all vectorized transformations.  
@@ -109,7 +109,7 @@ That’s why tidyverse code reads like poetry — concise, declarative, expressi
 
 ---
 
-## Exercises
+### Exercises
 
 1. Create a vector of 20 random integers using `sample(1:100, 20)` and compute their cube roots without using loops.  
 2. Given `scores <- c(85, 92, 77, 63, 95, 88)`, write one line to return all scores ≥ 90.  

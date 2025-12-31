@@ -10,7 +10,7 @@ seriesTitle: The R Mindset — Thinking in Data
 order: 4
 ---
 
-# Data as Objects, Analysis as Transformation
+**Data as Objects, Analysis as Transformation**
 
 > In R, you don’t command the data — you *transform* it.
 
@@ -19,7 +19,7 @@ That is the essence of R: **data as objects, analysis as transformation**.
 
 ---
 
-## 🧩 Seeing Data as Objects
+### 🧩 Seeing Data as Objects
 
 Everything in R is an object — data frames, vectors, lists, models.  
 You don’t just run commands; you **manipulate structures**.  
@@ -41,7 +41,7 @@ Each column is a vector, each row a moment in your data’s story.
 
 ---
 
-## 🔄 The Pipe: The Language of Flow
+### 🔄 The Pipe: The Language of Flow
 
 The pipe (`|>`, or `%>%` from `magrittr`) changed everything.  
 Instead of nesting functions, you **think in transformations** — one step flows into the next.
@@ -60,7 +60,7 @@ It’s not programming — it’s **thought in motion**.
 
 ---
 
-## 🧠 Transformation as Understanding
+### 🧠 Transformation as Understanding
 
 Transformation is not just cleaning — it’s **modeling your mental structure of reality**.  
 When you reshape a dataset, you’re deciding what matters, what disappears, and what stays visible.  
@@ -68,7 +68,7 @@ In this way, analysis becomes an act of **philosophy**: how you choose to see th
 
 ---
 
-## 💡 Reflection
+### 💡 Reflection
 
 > What does your pipeline say about how you think?
 
@@ -87,7 +87,7 @@ This is not just code — it’s a thought process, rendered in syntax.
 
 ---
 
-### 📘 Try It Yourself
+#### 📘 Try It Yourself
 
 1. Take any dataset from `datasets::`
 2. Apply at least three transformations using the pipe
@@ -95,7 +95,7 @@ This is not just code — it’s a thought process, rendered in syntax.
 
 ---
 
-### 🔗 Further Reading
+#### 🔗 Further Reading
 
 - [Wickham, H. (2014). *Tidy Data*. Journal of Statistical Software.](https://www.jstatsoft.org/article/view/v059i10)
 - [Bache & Wickham (2014). *Magrittr: A Forward-Pipe Operator for R*.](https://tidyverse.r-universe.dev/magrittr)

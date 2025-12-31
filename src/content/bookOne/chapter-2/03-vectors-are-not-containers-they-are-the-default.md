@@ -10,7 +10,7 @@ seriesTitle: "Objects, Structure, and the Shape of Thought"
 order: 3
 ---
 
-# Vectors Are Not Containers — They Are the Default
+**Vectors Are Not Containers — They Are the Default**
 
 Most languages treat vectors as a convenience.  
 R treats them as reality.
@@ -26,9 +26,9 @@ It is the axis around which the language turns.
 
 ---
 
-## The Scalar Illusion
+### The Scalar Illusion
 
-```r 
+```r
 x <- 5
 length(x)
 ```
@@ -41,11 +41,11 @@ This single fact explains why R behaves the way it does when you least expect it
 
 ---
 
-## Vectorized Thinking Is Not Optimization
+### Vectorized Thinking Is Not Optimization
 
 Consider:
 
-```r 
+```r
 1:5 + 10
 ```
 
@@ -61,20 +61,20 @@ It is a declaration of intent:
 
 ---
 
-## Why Loops Feel Awkward
+### Why Loops Feel Awkward
 
 You can write loops in R.
 
-```r 
+```r
 for (i in 1:5) {
   print(i + 10)
 }
 ```
 
-
 But this is not how R wants to think.
 
 Loops:
+
 - hide structure
 - obscure intent
 - encourage state mutation
@@ -86,9 +86,9 @@ R prefers you to state the transformation, not choreograph the movement.
 
 ---
 
-## Recycling Rules: A Feature, Not a Trap
+### Recycling Rules: A Feature, Not a Trap
 
-```r 
+```r
 c(1, 2, 3) + c(10, 20)
 ```
 
@@ -104,11 +104,11 @@ It is expectation.
 
 ---
 
-## Control Flow Is the Exception
+### Control Flow Is the Exception
 
 This is why `if()` behaves the way it does:
 
-```r 
+```r
 if (c(TRUE, FALSE)) {
   "yes"
 }
@@ -118,7 +118,7 @@ It fails—not because R is inconsistent, but because `if()` demands a single lo
 
 When you want vector logic, you must say so:
 
-```r 
+```r
 ifelse(c(TRUE, FALSE), "yes", "no")
 ```
 
@@ -126,7 +126,7 @@ Explicitness is the price of power.
 
 ---
 
-## Why This Matters for Everything That Follows
+### Why This Matters for Everything That Follows
 
 Vector-first thinking explains:
 

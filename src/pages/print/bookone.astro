@@ -61,39 +61,113 @@ for (const chapter of book) {
     <style>
       @page {
         size: A4;
-        margin: 25mm;
+        margin: 24mm;
       }
 
       body {
         font-family: serif;
+        font-size: 11pt;
         line-height: 1.6;
+        hyphens: auto;
+        counter-reset: chapter;
       }
 
       .chapter {
         page-break-before: always;
+        counter-increment: chapter;
+        counter-reset: section subsection;
+      }
+
+      .chapter > h1::before {
+        content: counter(chapter) ". ";
+      }
+
+      article {
+        counter-reset: subsection;
+      }
+
+      article > h2 {
+        counter-increment: section;
+      }
+
+      article > h3 {
+        counter-increment: subsection;
+      }
+
+      h1 {
+        font-size: 20pt;
+        margin: 0 0 10mm 0;
+      }
+
+      h2 {
+        font-size: 14pt;
+        margin: 8mm 0 4mm;
+      }
+
+      h3 {
+        font-size: 12pt;
+        margin: 6mm 0 3mm;
+      }
+
+      h1, h2, h3 {
+        page-break-after: avoid;
+      }
+
+      pre, blockquote, figure {
+        page-break-inside: avoid;
+      }
+
+      p {
+        orphans: 3;
+        widows: 3;
+      }
+
+      /* Each article = new section */
+      .chapter article {
+        counter-reset: section subsection;
       }
 
       .subchapter {
           break-inside: avoid;
       }
  
-      h1, h2, h3 {
-        page-break-after: avoid;
+      article h1,
+      article h2,
+      article h3 {
+        scroll-margin-top: 3rem;
       }
 
-      .astro-code {
-        padding: 1rem 1.25rem !important;
+      .toc {
+        page-break-after: always;
+      }
+
+      .toc h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .toc-chapter {
+        margin-bottom: 1.5rem;
+      }
+
+      .toc-chapter h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .toc ul {
+        margin-left: 1.5rem;
+      }
+
+      .toc li {
+        margin: 0.25rem 0;
       }
 
       pre {
-        background: #f6f8fa;
-        border-left: 4px solid #4f46e5; /* indigo spine */
-        padding: 1rem 1.25rem !important;
-        margin: 1.5rem 0;
-        overflow-x: auto;
-        font-size: 0.9rem;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 9pt;
         line-height: 1.45;
-        page-break-inside: avoid;
       }
 
       pre code {
@@ -135,39 +209,7 @@ for (const chapter of book) {
         orphans: 3;
         widows: 3;
       }
-
-      article h1,
-      article h2,
-      article h3 {
-        scroll-margin-top: 3rem;
-      }
-
-      .toc {
-        page-break-after: always;
-      }
-
-      .toc h1 {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .toc-chapter {
-        margin-bottom: 1.5rem;
-      }
-
-      .toc-chapter h2 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .toc ol {
-        margin-left: 1.5rem;
-      }
-
-      .toc li {
-        margin: 0.25rem 0;
-      }
-    </style>
+   </style>
   </head>
 
   <body>
@@ -180,7 +222,7 @@ for (const chapter of book) {
     <hr />
 
     <section class="toc">
-      <h2>Table of Contents</h2>
+      <h1>Table of Contents</h1>
 
       {Array.from(chapters.values()).map((chapter, i) => (
         <div class="toc-chapter">
@@ -189,7 +231,7 @@ for (const chapter of book) {
           <ul style="list-style: none; padding-left: 1.25rem;">
             {chapter.entries.map((entry:any, j:any) => (
               <li>
-                <a href={`#${entry.slug}`}>
+                <a class="" href={`#${entry.slug}`}>
                   {i + 1}.{j + 1} {entry.data.title}
                 </a>
               </li>
@@ -204,7 +246,9 @@ for (const chapter of book) {
     <!-- Book -->
     {book.map(async (chapter, ci) => (
       <section class="chapter">
-        <h1>{ci + 1}. {chapter.title}</h1>
+        <h1 id={`chapter-${ci + 1}`}>
+          {ci + 1}. {chapter.title}
+        </h1>
 
         {await Promise.all(
           chapter.entries.map(async (entry:any, si:any) => {
@@ -212,7 +256,9 @@ for (const chapter of book) {
 
             return (
               <article>
-                <h2>{ci + 1}.{si + 1} {entry.data.title}</h2>
+                <h2 id={entry.slug}> 
+                  {ci + 1}.{si + 1} {entry.data.title} 
+                </h2>
                 <Content />
               </article>
             );

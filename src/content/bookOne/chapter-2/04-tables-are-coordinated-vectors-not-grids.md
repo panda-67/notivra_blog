@@ -10,7 +10,7 @@ seriesTitle: "Objects, Structure, and the Shape of Thought"
 order: 4
 ---
 
-# Tables Are Coordinated Vectors, Not Grids
+**Tables Are Coordinated Vectors, Not Grids**
 
 If you think of a data frame as a grid of cells, you will fight R forever.
 
@@ -28,12 +28,12 @@ Columns are truth.
 
 ---
 
-## The Illusion of Rows
+### The Illusion of Rows
 
 Open any spreadsheet and your eyes go to rows first.  
 R refuses this habit.
 
-```r 
+```r
 df <- data.frame(
   species = c("A", "B", "C"),
   weight  = c(12.3, 15.8, 9.4)
@@ -42,7 +42,7 @@ df <- data.frame(
 
 Ask R what this object really is:
 
-```r 
+```r
 str(df)
 ```
 
@@ -54,7 +54,7 @@ The table exists only because these vectors agree to align.
 
 ---
 
-## Why Row-Wise Thinking Breaks Down
+### Why Row-Wise Thinking Breaks Down
 
 When analysts ask:
 
@@ -76,11 +76,11 @@ The computation will follow.
 
 ---
 
-## Why Column-Wise Operations Feel Natural
+### Why Column-Wise Operations Feel Natural
 
 This is why the most common R verbs act on columns:
 
-```r 
+```r
 df$weight
 mean(df$weight)
 ```
@@ -92,7 +92,7 @@ A column is already the right shape for analysis.
 
 ---
 
-## Data Frames as Contracts
+### Data Frames as Contracts
 
 A valid data frame makes a promise:
 
@@ -109,7 +109,7 @@ But your analysis will quietly rot.
 
 ---
 
-## Why This Design Is Honest
+### Why This Design Is Honest
 
 R’s table model mirrors how statistics works.
 
@@ -126,5 +126,5 @@ It is a statistical object with a human-friendly face.
 
 If you treat a data frame like a grid, you will write code that looks busy and says nothing.
 
-If you treat it as coordinated vectors,   
+If you treat it as coordinated vectors,
 analysis becomes alignment instead of effort.

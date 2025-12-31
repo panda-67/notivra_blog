@@ -10,7 +10,7 @@ seriesTitle: The R Mindset — Thinking in Data
 order: 1
 ---
 
-# Why R Still Matters
+**Why R Still Matters**
 
 They say R is old.  
 They say Python won.  
@@ -19,7 +19,7 @@ R never left. It just stopped shouting.
 
 ---
 
-## The Language That Thinks in Data
+### The Language That Thinks in Data
 
 R wasn’t designed to “build apps.”  
 It was built to **think statistically** — to treat uncertainty, variation, and inference as first-class citizens.  
@@ -38,7 +38,7 @@ This isn’t a loop or a class method. It’s **a statement of intent**:
 
 ---
 
-## Beyond Popularity Contests
+### Beyond Popularity Contests
 
 Yes, Python dominates headlines.  
 Yes, AI libraries bloom faster there.  
@@ -53,7 +53,7 @@ R doesn’t chase hype. It curates truth.
 
 ---
 
-## Reproducibility as a Virtue
+### Reproducibility as a Virtue
 
 Data without context is noise.  
 Code without reproducibility is vanity.  
@@ -66,7 +66,7 @@ R didn’t.
 
 ---
 
-## The Ecosystem of Precision
+### The Ecosystem of Precision
 
 From *genomic pipelines* to *survey analysis*, from *Bayesian inference* to *machine learning*, R stands because its foundation is academic rigor married to open-source freedom.  
 You can trace a statistical model in R back to its author, its math, its citation.  
@@ -74,7 +74,7 @@ It’s not just a tool — it’s a **culture of accountability**.
 
 ---
 
-## What This Series Will Teach You
+### What This Series Will Teach You
 
 In this series — *Mastering R: From Data to Clarity* — we won’t be learning syntax for syntax’s sake.  
 We’ll learn **how to think like R thinks**:

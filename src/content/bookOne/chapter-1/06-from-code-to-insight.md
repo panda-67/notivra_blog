@@ -10,7 +10,7 @@ seriesTitle: The R Mindset — Thinking in Data
 order: 6
 ---
 
-# From Code to Insight
+**From Code to Insight**
 
 > The goal is not a model. The goal is understanding.  
 
@@ -20,7 +20,7 @@ Each transformation, each plot, each tidy frame is a translation of the world’
 
 ---
 
-## 🌊 The Journey from Raw to Real
+### 🌊 The Journey from Raw to Real
 
 It starts with chaos — messy CSVs, missing values, and tangled variables.
 Through the pipe, the chaos becomes rhythm.  
@@ -42,7 +42,7 @@ What was once noise is now narrative — the forest speaks in bars and scales.
 
 ---
 
-## 🔍 Insight as a Creative Act
+### 🔍 Insight as a Creative Act
 
 Insight doesn’t appear from code execution. It appears from **imagination meeting evidence**.
 Every visualization is a hypothesis drawn in color.
@@ -52,7 +52,7 @@ That’s the artistry behind the analysis.
 
 ---
 
-## 🎨 The Aesthetics of Clarity
+### 🎨 The Aesthetics of Clarity
 
 R teaches elegance: not through decoration, but through **transparency**.
 The tidyverse isn’t beautiful because it’s popular — it’s beautiful because it lets you see truth *without friction*.  
@@ -71,7 +71,7 @@ A well-crafted graph is not a picture — it’s an *argument you can feel*.
 
 ---
 
-## 🧭 The Discipline of Reflection
+### 🧭 The Discipline of Reflection
 
 Before publishing, pause.  
 Ask: *Does this code reveal the truth, or just confirm my bias?*  
@@ -82,7 +82,7 @@ Good R work is humble — it admits uncertainty, annotates decisions, and shares
 
 ---
 
-## ✍️ Reflection
+### ✍️ Reflection
 
 Try this small ritual:  
 
@@ -93,7 +93,7 @@ Try this small ritual:
 
 ---
 
-### 🔗 Further Reading
+#### 🔗 Further Reading
 
 - [Wickham. H, Çetinkaya-Rundel. M, and Grolemund. G  (2017). *R for Data Science* — Communication.](https://r4ds.hadley.nz/communication.html)
 - [Edward Tufte. *The Visual Display of Quantitative Information.*](https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/)
