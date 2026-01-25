@@ -7,10 +7,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "book": "astro build --config astro.print.config.mjs && weasyprint press/build/print/bookone/index.html \"$npm_package_config_pdf\""
+    "build:book": "astro build --config astro.print.config.mjs",
+    "pdf": "weasyprint press/build/print/bookone/index.html \"$npm_package_config_pdf\"",
+    "docx": "pandoc press/build/print/bookone/index.html --reference-doc=press/reference.docx -o \"$npm_package_config_doc\"",
+    "md": "pandoc press/build/print/bookone/index.html -o press/editable/Mastering_R.md"
   },
   "config": {
-    "pdf": "press/pdf/Mastering R From Data to Clarity.pdf"
+    "pdf": "press/pdf/Mastering R From Data to Clarity.pdf",
+    "doc": "press/pdf/Mastering R From Data to Clarity.docx"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.9",

@@ -59,18 +59,80 @@ for (const chapter of book) {
     <title>Book One</title>
 
     <style>
+      /* ===============================
+         PAGE GEOMETRY
+         =============================== */
+
       @page {
-        size: A4;
-        margin: 24mm;
+        size: B5;
+        margin: 23mm;
+
+        @bottom-center {
+          content: counter(page);
+          font-size: 9pt;
+          color: #555;
+        }
       }
+
+      /* ===============================
+        FRONT MATTER (Roman numerals)
+        =============================== */
+
+      .frontmatter {
+        page: front;
+      }
+
+      @page front {
+        @bottom-center {
+          content: counter(page, lower-roman);
+        }
+      }
+
+      /* ===============================
+        MAIN MATTER
+        =============================== */
+
+      @page body:first {
+        counter-reset: page 1;
+      }
+
+      .mainmatter {
+        page: body;
+        counter-reset: page 1 chapter;
+      }
+
+      @page body {
+        @bottom-center {
+          content: counter(page);
+        }
+
+        @top-center {
+          content: string(chapter);
+          font-size: 10pt;
+          font-style: italic;
+          color: #666;
+        }
+      }
+
+      /* ===============================
+        TYPOGRAPHY
+        =============================== */
 
       body {
         font-family: serif;
         font-size: 11pt;
         line-height: 1.6;
         hyphens: auto;
-        counter-reset: chapter;
       }
+
+      p {
+        orphans: 3;
+        widows: 3;
+      }
+
+      /* ===============================
+        CHAPTER STRUCTURE
+        =============================== */
 
       .chapter {
         page-break-before: always;
@@ -78,36 +140,15 @@ for (const chapter of book) {
         counter-reset: section subsection;
       }
 
-      .chapter > h1::before {
-        content: counter(chapter) ". ";
-      }
-
-      article {
-        counter-reset: subsection;
-      }
-
-      article > h2 {
-        counter-increment: section;
-      }
-
-      article > h3 {
-        counter-increment: subsection;
-      }
-
-      h1 {
+      .chapter > h1 {
         font-size: 20pt;
         margin: 0 0 10mm 0;
+        string-set: chapter content();
       }
 
-      h2 {
-        font-size: 14pt;
-        margin: 8mm 0 4mm;
-      }
-
-      h3 {
-        font-size: 12pt;
-        margin: 6mm 0 3mm;
-      }
+      /* ===============================
+        FLOW CONTROL
+        =============================== */
 
       h1, h2, h3 {
         page-break-after: avoid;
@@ -117,25 +158,36 @@ for (const chapter of book) {
         page-break-inside: avoid;
       }
 
-      p {
-        orphans: 3;
-        widows: 3;
+      /* ===============================
+        CODE BLOCKS
+        =============================== */
+
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 9pt;
+        line-height: 1.45;
+        margin: 6mm 0;
       }
 
-      /* Each article = new section */
-      .chapter article {
-        counter-reset: section subsection;
+      code {
+        font-family: "JetBrains Mono", "Fira Code", monospace;
       }
 
-      .subchapter {
-          break-inside: avoid;
+      /* ===============================
+        BLOCKQUOTES
+        =============================== */
+
+      blockquote {
+        margin: 6mm 0;
+        padding-left: 6mm;
+        border-left: 2mm solid #999;
+        font-style: italic;
       }
- 
-      article h1,
-      article h2,
-      article h3 {
-        scroll-margin-top: 3rem;
-      }
+
+      /* ===============================
+        TABLE OF CONTENTS
+        =============================== */
 
       .toc {
         page-break-after: always;
@@ -143,85 +195,22 @@ for (const chapter of book) {
 
       .toc h1 {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 12mm;
       }
 
-      .toc-chapter {
-        margin-bottom: 1.5rem;
+      .toc a {
+        text-decoration: none;
+        color: inherit;
       }
-
-      .toc-chapter h2 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .toc ul {
-        margin-left: 1.5rem;
-      }
-
-      .toc li {
-        margin: 0.25rem 0;
-      }
-
-      pre {
-        white-space: pre-wrap;
-        word-break: break-word;
-        font-size: 9pt;
-        line-height: 1.45;
-      }
-
-      pre code {
-        background: none;
-        padding: 0;
-        color: #1f2937;
-        font-family: "JetBrains Mono", "Fira Code", monospace;
-      }
-
-      :not(pre) > code {
-        background: #eef2ff;
-        color: #3730a3;
-        padding: 0.15em 0.35em;
-        border-radius: 4px;
-        font-size: 0.9em;
-        font-family: "JetBrains Mono", monospace;
-      }
-
-      blockquote {
-        margin: 1.75rem 0;
-        padding: 1rem 1.25rem;
-        background: #fafafa;
-        border-left: 4px solid #9ca3af;
-        color: #374151;
-        font-style: italic;
-        page-break-inside: avoid;
-      }
-
-      blockquote p {
-        margin: 0.5rem 0;
-      }
-
-      blockquote strong {
-        font-style: normal;
-        color: #111827;
-      }
-
-      p, blockquote, pre {
-        orphans: 3;
-        widows: 3;
-      }
-   </style>
+    </style>
   </head>
 
   <body>
     <!-- Title Page -->
-    <section>
+    <section class="frontmatter toc">
       <h1>Mastering R: From Data to Clarity</h1>
-      <p><em>Published by Notivra</em></p>
-    </section>
+      <hr />
 
-    <hr />
-
-    <section class="toc">
       <h1>Table of Contents</h1>
 
       {Array.from(chapters.values()).map((chapter, i) => (
@@ -240,31 +229,34 @@ for (const chapter of book) {
         </div>
       ))}
 
+      <p><em>Published by Notivra</em></p>
       <hr />
     </section>
 
     <!-- Book -->
-    {book.map(async (chapter, ci) => (
-      <section class="chapter">
-        <h1 id={`chapter-${ci + 1}`}>
-          {ci + 1}. {chapter.title}
-        </h1>
+    <main class="mainmatter">
+      {book.map(async (chapter, ci) => (
+        <section class="chapter">
+          <h1 id={`chapter-${ci + 1}`}>
+            {ci + 1}. {chapter.title}
+          </h1>
 
-        {await Promise.all(
-          chapter.entries.map(async (entry:any, si:any) => {
-            const { Content } = await render(entry);
+          {await Promise.all(
+            chapter.entries.map(async (entry:any, si:any) => {
+          const { Content } = await render(entry);
 
-            return (
-              <article>
-                <h2 id={entry.slug}> 
-                  {ci + 1}.{si + 1} {entry.data.title} 
-                </h2>
-                <Content />
-              </article>
-            );
+          return (
+          <article>
+            <h2 id={entry.slug}> 
+              {ci + 1}.{si + 1} {entry.data.title} 
+            </h2>
+            <Content />
+          </article>
+          );
           })
-        )}
-      </section>
-    ))}
+          )}
+        </section>
+      ))}
+    </main>
   </body>
 </html>

@@ -9,7 +9,7 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://insights.notivra.com',
+  site: 'https://notivra.com',
   integrations: [mdx(), sitemap(), solidJs()],
   outDir: '../notivra-php/public_html/blog',
   base: '/',
