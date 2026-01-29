@@ -87,7 +87,7 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
         <!-- Left -->
         <aside class="hidden md:block space-y-8 lg:col-span-2 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
           {headings && (
-            <div class="md:sticky top-16 bg-white/90">
+            <div class="md:sticky top-[72px] bg-white/90">
               <PostTOC headings={headings} minDepth={2} maxDepth={3} />
               <hr class="mt-10 border-gray-200" />
             </div>
@@ -116,7 +116,7 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
         <!-- Right -->
         <aside class="space-y-8 lg:col-span-3 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
           {series && (
-            <div class="md:sticky top-16 bg-white/80">
+            <div class="md:sticky top-[72px] bg-white/80">
               <SeriesTOC {...data} />
               <hr class="mt-10 border-gray-200" />
             </div>

@@ -13,8 +13,8 @@
 }
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
+  --accent: #000d8a;
+  --accent-dark: #272D33;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -48,7 +48,7 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 1.7;
 }
 main {
@@ -122,7 +122,7 @@ hr {
 }
 @media (max-width: 720px) {
 	body {
-		font-size: 18px;
+		font-size: 17px;
 	}
 	main {
 		padding: 0.6em;
