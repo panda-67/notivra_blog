@@ -3,5 +3,5 @@
 
 export const SITE_TITLE = "Notivra";
 export const SITE_DESCRIPTION = "Welcome to Notivra Insights!";
-export const PAGE_SIZE = 7;
+export const PAGE_SIZE = 10;
 

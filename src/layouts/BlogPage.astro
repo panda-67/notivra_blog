@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { type CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
@@ -13,7 +14,8 @@ import '../styles/blog-page.css';
 
 type Props = {
   data: CollectionEntry<'blog'>['data'];
-  headings: []
+  headings: MarkdownHeading[];
+  readingTime: number;
 };
 
 // Get all blog posts
@@ -32,7 +34,7 @@ for (const post of allPosts) {
 }
 const allTags = Array.from(tagSet).sort();
 
-const {data, headings} = Astro.props;
+const {data, headings, readingTime} = Astro.props;
 
 const { title, author, description, tags, pubDate, updatedDate, heroImage, series } = data;
 ---
@@ -67,6 +69,8 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
               <span> (updated <FormattedDate date={updatedDate} />)</span>
             )}
           </span>
+          <span class="hidden sm:inline">·</span>
+          <span>{readingTime} min read</span>
         </div>
 
         {tags && tags.length > 0 && (
@@ -86,12 +90,12 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
       <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8">
         <!-- Left -->
         <aside class="hidden md:block space-y-8 lg:col-span-2 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
-          {headings && (
-            <div class="md:sticky top-[72px] bg-white/90">
+          <section class="md:sticky top-16 pt-4 bg-white/90">
+            {headings && (
               <PostTOC headings={headings} minDepth={2} maxDepth={3} />
-              <hr class="mt-10 border-gray-200" />
-            </div>
-          )}
+              <hr class="mt-2 border-gray-200" />
+            )}
+          </section>
           <section>
             <h2 class="text-2xl font-semibold">Categories</h2>
             <div class="flex flex-wrap gap-2 mt-2">
@@ -108,7 +112,7 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
         </aside>
 
         <!-- Main -->
-        <article class="prose lg:col-span-7 [&_h2]:scroll-mt-16 [&_h3]:scroll-mt-16">
+        <article class="prose lg:col-span-7 [&_h2]:scroll-mt-20 [&_h3]:scroll-mt-20">
           <slot />
           <SeriesNav {...data} />
         </article>
@@ -116,7 +120,7 @@ const { title, author, description, tags, pubDate, updatedDate, heroImage, serie
         <!-- Right -->
         <aside class="space-y-8 lg:col-span-3 my-8 lg:mt-6 mx-8 sm:mx-12 lg:mx-auto">
           {series && (
-            <div class="md:sticky top-[72px] bg-white/80">
+            <div class="md:sticky top-16 pt-4 bg-white/80">
               <SeriesTOC {...data} />
               <hr class="mt-10 border-gray-200" />
             </div>

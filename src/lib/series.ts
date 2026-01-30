@@ -53,3 +53,8 @@ export async function getAllSeries() {
   const all = await getCollection('blog');
   return [...new Set(all.map(p => p.data.series).filter(Boolean))];
 }
+
+export function readingTime(markdown: string, wpm = 225) {
+  const words = markdown.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / wpm));
+}

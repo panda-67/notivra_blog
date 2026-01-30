@@ -25,26 +25,62 @@ const toc = headings.filter(
 ---
 
 {toc.length > 0 && (
-  <nav class="post-toc mb-12">
-    <h3 class="text-2xl font-semibold mb-3">
-      {title}
+  <nav class="post-toc">
+    <h3
+      class="toc-title text-2xl font-semibold !mb-1.5 cursor-pointer select-none flex items-center gap-2"
+      onclick="this.nextElementSibling.classList.toggle('open')"
+    >
+      <span>{title}</span>
+      <span class="toc-indicator">▾</span>
     </h3>
 
-    <ol class="list-decimal list-outside space-y-1 text-sm px-3">
+    <ol class="toc-list list-decimal list-outside space-y-1 text-sm px-3">
       {toc.map((h) => (
         <li class={h.depth > minDepth ? 'ml-4 text-slate-400' : 'text-slate-300'}>
-         <a
+          <a
             href={`#${h.slug}`}
             data-toc-link={h.slug}
-            class="hover:text-indigo-400 transition"
+            class="hover:text-indigo-400"
           >
             {h.text}
-          </a> 
+          </a>
         </li>
       ))}
     </ol>
   </nav>
 )}
+
+<style>
+  .post-toc .toc-list {
+    max-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    transition: max-height 600ms ease, margin-top 300ms ease, margin-bottom 600ms ease;
+  }
+
+  .post-toc .toc-list.open {
+    max-height: 1000px; /* exceeds worst-case height */
+    margin-top: 18px;
+    margin-bottom: 32px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .post-toc .toc-list {
+      transition: none;
+    }
+  }
+
+  .post-toc .toc-indicator {
+    display: inline-block;
+    transition: transform 600ms ease;
+    transform: rotate(-90deg); /* closed */
+  }
+
+  .post-toc .toc-list.open ~ .toc-title .toc-indicator,
+  .post-toc .toc-title:has(+ .toc-list.open) .toc-indicator {
+    transform: rotate(0deg); /* open */
+  }
+</style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

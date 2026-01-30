@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import MainPage from '../layouts/MainPage.astro';
-import {  PAGE_SIZE } from '../consts';
+import { PAGE_SIZE } from '../consts';
 
 const posts = (await getCollection('blog'))
   .filter(p => !p.data.draft)
